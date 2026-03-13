@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>NBA Picks · Thu Mar 12 · Updated 9:25 PM ET</title>
+<title>NBA Picks · Thu Mar 12 · Updated 9:46 PM ET</title>
 <style>
 :root{--bg:#06080f;--card:#0d1119;--card2:#131822;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--text:#e2e6f0;--muted:#4a5270;--muted2:#7a84a8;--green:#00e676;--red:#ff4444;--gold:#ffc107;--blue:#40c4ff;--purple:#b388ff;--accent:#00e5ff;--accent2:#0091ea;}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -14,7 +14,9 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .hdr-left{display:flex;flex-direction:column;}
 .hdr-title{font-size:21px;font-weight:900;color:var(--accent);letter-spacing:-0.01em;line-height:1;}
 .hdr-sub{font-size:10px;color:var(--muted2);text-transform:uppercase;letter-spacing:0.1em;margin-top:3px;}
-.live-pill{display:flex;align-items:center;gap:5px;background:rgba(0,230,118,0.08);border:1px solid rgba(0,230,118,0.22);border-radius:20px;padding:5px 11px;font-size:10px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:0.07em;white-space:nowrap;}
+.hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+.live-pill{display:flex;align-items:center;gap:5px;background:rgba(0,230,118,0.08);border:1px solid rgba(0,230,118,0.22);border-radius:20px;padding:4px 10px;font-size:10px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:0.07em;white-space:nowrap;}
+.record-pill{font-size:10px;color:var(--gold);font-weight:700;text-align:right;}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite;flex-shrink:0;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
 .disc{background:rgba(255,193,7,0.06);border-bottom:1px solid rgba(255,193,7,0.12);padding:7px 16px;font-size:10px;color:rgba(255,193,7,0.7);line-height:1.5;}
@@ -30,12 +32,14 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .game-card:active{opacity:0.9;}
 .gc-top{padding:10px 14px 8px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);}
 .gc-time{font-size:10px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:0.08em;}
-.gc-badges{display:flex;gap:5px;}
+.gc-badges{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;}
 .badge{font-size:9px;font-weight:800;padding:2px 7px;border-radius:10px;text-transform:uppercase;letter-spacing:0.04em;}
 .badge-e{background:rgba(64,196,255,0.12);color:var(--blue);}
 .badge-w{background:rgba(255,68,68,0.12);color:#ff8a80;}
 .badge-ou{background:rgba(255,193,7,0.1);color:var(--gold);}
 .badge-b2b{background:rgba(255,68,68,0.12);color:var(--red);}
+.badge-inj{background:rgba(255,68,68,0.12);color:var(--red);}
+.badge-sharp{background:rgba(179,136,255,0.15);color:var(--purple);}
 .gc-matchup{padding:12px 14px 8px;}
 .team-row{display:flex;align-items:center;gap:10px;}
 .team-row+.team-row{margin-top:8px;}
@@ -54,6 +58,14 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .win-bar{height:4px;border-radius:2px;background:rgba(255,255,255,0.05);overflow:hidden;}
 .win-bar-fill{height:100%;border-radius:2px;}
 .win-bar-lbls{display:flex;justify-content:space-between;margin-top:3px;font-size:9px;color:var(--muted);}
+/* Betting % bar */
+.bpct-wrap{padding:0 12px 10px;}
+.bpct-row{display:flex;align-items:center;gap:6px;margin-bottom:5px;}
+.bpct-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;width:45px;flex-shrink:0;}
+.bpct-bar{flex:1;height:16px;background:var(--card2);border-radius:4px;overflow:hidden;display:flex;position:relative;}
+.bpct-away{height:100%;background:rgba(64,196,255,0.35);display:flex;align-items:center;justify-content:flex-start;padding-left:5px;font-size:9px;font-weight:800;color:var(--blue);white-space:nowrap;}
+.bpct-home{height:100%;background:rgba(0,230,118,0.25);display:flex;align-items:center;justify-content:flex-end;padding-right:5px;font-size:9px;font-weight:800;color:var(--green);white-space:nowrap;}
+.bpct-sharp{font-size:9px;color:var(--purple);font-weight:700;text-align:center;padding:0 12px 6px;}
 .bet-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;padding:2px 12px 10px;}
 .bcell{background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:8px 5px;text-align:center;cursor:pointer;transition:all 0.1s;user-select:none;}
 .bcell:active{transform:scale(0.94);}
@@ -132,29 +144,50 @@ td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.03);white-space:n
 tr:last-child td{border-bottom:none;} tr:hover td{background:rgba(255,255,255,0.015);}
 .sw{color:var(--green);font-weight:700;} .sl{color:var(--red);font-weight:700;}
 .std-note{font-size:10px;color:var(--muted);text-align:center;padding:12px 0;}
+.record-link{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px 16px;margin-bottom:14px;text-decoration:none;color:var(--text);display:flex;justify-content:space-between;align-items:center;}
+.rl-left{display:flex;flex-direction:column;gap:3px;}
+.rl-title{font-size:13px;font-weight:800;color:var(--gold);}
+.rl-sub{font-size:11px;color:var(--muted2);}
+.rl-stats{display:flex;gap:14px;}
+.rl-stat{text-align:center;}
+.rl-val{font-size:17px;font-weight:900;color:var(--green);font-variant-numeric:tabular-nums;}
+.rl-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;}
 </style>
 </head>
 <body>
 <div class="hdr">
   <div class="hdr-left">
     <div class="hdr-title">🏀 NBA PICKS</div>
-    <div class="hdr-sub">Thu Mar 12 · Updated 9:25 PM ET · Smart Model v2</div>
+    <div class="hdr-sub">Thu Mar 12 · Updated 9:46 PM ET</div>
   </div>
-  <div class="live-pill"><div class="dot"></div>7 Games</div>
+  <div class="hdr-right">
+    <div class="live-pill"><div class="dot"></div>7 Games</div>
+    <div class="record-pill">ATS 0-0 (—)</div>
+  </div>
 </div>
-<div class="disc">⚠️ Entertainment only. Model: win prob (25%), home court (10%), B2B rest (15%), spread size ATS (10%), pace (10%). Gamble responsibly.</div>
+<div class="disc">⚠️ Entertainment only. Model: win prob, home court, B2B, injuries, power rankings, line movement. Gamble responsibly.</div>
 <div class="tab-bar">
   <div class="tab-btn on" id="tb-games" onclick="goTab('games')">Games</div>
   <div class="tab-btn" id="tb-parlay" onclick="goTab('parlay')">Parlay</div>
   <div class="tab-btn" id="tb-standings" onclick="goTab('standings')">Standings</div>
 </div>
 <div class="pane on" id="pane-games">
-  <div class="section-label" style="margin-top:4px">Tonight's Picks</div>
+  <a class="record-link" href="record.html">
+    <div class="rl-left">
+      <div class="rl-title">📊 Model Track Record</div>
+      <div class="rl-sub">View full pick history →</div>
+    </div>
+    <div class="rl-stats">
+      <div class="rl-stat"><div class="rl-val">0-0</div><div class="rl-lbl">ATS</div></div>
+      <div class="rl-stat"><div class="rl-val">0-0</div><div class="rl-lbl">O/U</div></div>
+    </div>
+  </a>
+  <div class="section-label">Tonight's Picks</div>
   <div class="legend">
     <span><span style="color:var(--green)">■</span> Strong</span>
     <span><span style="color:var(--gold)">■</span> Value</span>
-    <span><span style="color:var(--purple)">■</span> Lean</span>
-    <span><span style="color:var(--red)">■</span> Fade/B2B</span>
+    <span><span style="color:var(--purple)">■</span> Sharp $$</span>
+    <span><span style="color:var(--red)">■</span> Fade/B2B/Inj</span>
   </div>
   <div id="game-list"></div>
   <div id="detail-anchor"></div>
@@ -175,13 +208,15 @@ tr:last-child td{border-bottom:none;} tr:hover td{background:rgba(255,255,255,0.
     <div style="margin-top:10px;text-align:center;"><span style="font-size:11px;color:var(--muted2);">Hit probability: </span><span id="p-prob" style="font-size:13px;font-weight:800;color:var(--purple);">—</span></div>
   </div>
   <div class="model-weights">
-    <div class="mw-title">How the Smart Model Works</div>
+    <div class="mw-title">Smart Model v3 — Factors</div>
     <div class="mw-row"><div class="mw-lbl">Win Probability</div><div class="mw-bar"><div class="mw-fill" style="width:25%"></div></div><div class="mw-pct">25%</div></div>
     <div class="mw-row"><div class="mw-lbl">Back-to-Back Rest</div><div class="mw-bar"><div class="mw-fill" style="width:15%"></div></div><div class="mw-pct">15%</div></div>
     <div class="mw-row"><div class="mw-lbl">Home Court Edge</div><div class="mw-bar"><div class="mw-fill" style="width:10%"></div></div><div class="mw-pct">10%</div></div>
-    <div class="mw-row"><div class="mw-lbl">Spread Size (ATS)</div><div class="mw-bar"><div class="mw-fill" style="width:10%"></div></div><div class="mw-pct">10%</div></div>
-    <div class="mw-row"><div class="mw-lbl">Pace / O-U Matchup</div><div class="mw-bar"><div class="mw-fill" style="width:10%"></div></div><div class="mw-pct">10%</div></div>
-    <div class="mw-note">Coming soon: line movement, injury report alerts, ATS season records.</div>
+    <div class="mw-row"><div class="mw-lbl">Power Rankings</div><div class="mw-bar"><div class="mw-fill" style="width:10%"></div></div><div class="mw-pct">10%</div></div>
+    <div class="mw-row"><div class="mw-lbl">Injury Report</div><div class="mw-bar"><div class="mw-fill" style="width:10%"></div></div><div class="mw-pct">10%</div></div>
+    <div class="mw-row"><div class="mw-lbl">Line Movement</div><div class="mw-bar"><div class="mw-fill" style="width:10%"></div></div><div class="mw-pct">10%</div></div>
+    <div class="mw-row"><div class="mw-lbl">Spread Size ATS</div><div class="mw-bar"><div class="mw-fill" style="width:10%"></div></div><div class="mw-pct">10%</div></div>
+    <div class="mw-note">Public betting % shown when available. Sharp money alert fires when public % and money % diverge by 15%+.</div>
   </div>
 </div>
 <div class="pane" id="pane-standings">
@@ -189,7 +224,7 @@ tr:last-child td{border-bottom:none;} tr:hover td{background:rgba(255,255,255,0.
   <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Team</th><th>W</th><th>L</th><th>PCT</th><th>Strk</th></tr></thead><tbody id="east-body"></tbody></table></div>
   <div class="std-conf" style="margin-top:20px">Western Conference</div>
   <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Team</th><th>W</th><th>L</th><th>PCT</th><th>Strk</th></tr></thead><tbody id="west-body"></tbody></table></div>
-  <div class="std-note">Standings updated daily · Thu Mar 12 · Updated 9:25 PM ET</div>
+  <div class="std-note">Updated daily · Thu Mar 12 · Updated 9:46 PM ET</div>
 </div>
 <script>
 const GAMES=[
@@ -201,38 +236,52 @@ const GAMES=[
     "awayFull": "Bulls",
     "awayColor": "#CE1141",
     "awayB2B": false,
+    "awayInjuries": [],
     "home": "LAL",
     "homeFull": "Lakers",
     "homeColor": "#552583",
     "homeB2B": false,
+    "homeInjuries": [],
     "homeSpread": -11.5,
-    "juice": "-112",
-    "awayML": "+425",
-    "homeML": "-575",
-    "total": 239.5,
-    "overJ": "-105",
-    "underJ": "-115",
-    "homeWinProb": 81.7,
-    "awayWinProb": 18.3,
-    "modelScore": 59.4,
-    "projMargin": 12.0,
-    "spreadEdge": 0.5,
+    "juice": "-110",
+    "awayML": "+410",
+    "homeML": "-550",
+    "total": 240.5,
+    "overJ": "-110",
+    "underJ": "-110",
+    "homeWinProb": 81.2,
+    "awayWinProb": 18.8,
+    "modelScore": 63.2,
+    "projMargin": 11.9,
+    "spreadEdge": 0.4,
     "spdSide": null,
     "spdRec": "neutral",
-    "totalPick": "Over 239.5",
+    "totalPick": "Over 240.5",
     "totalRec": "value",
     "mlRec": "strong",
+    "lineMoved": true,
+    "lineMovedNote": "Line likely moved toward LAL (sharp action)",
+    "sharpFlag": false,
+    "sharpNote": "",
+    "awayBetPct": null,
+    "homeBetPct": null,
+    "awayMoneyPct": null,
+    "homeMoneyPct": null,
     "signals": [
+      {
+        "t": "Line moved \ud83d\udcc8",
+        "c": "sig-i"
+      },
       {
         "t": "Lock territory",
         "c": "sig-s"
       },
       {
-        "t": "Over 239.5",
+        "t": "Over 240.5",
         "c": "sig-i"
       }
     ],
-    "note": "Vegas has LAL as 11.5-pt favorite. Model projects LAL wins 82% \u2014 spread edge: +0.5 pts. O/U 239.5: lean Over (fast pace)."
+    "note": "Vegas has LAL as 11.5-pt favorite. Model projects LAL wins 81% \u2014 spread edge: +0.4 pts. Line likely moved toward LAL (sharp action). O/U 240.5: lean Over (fast pace). "
   },
   {
     "id": 1,
@@ -242,28 +291,42 @@ const GAMES=[
     "awayFull": "Wizards",
     "awayColor": "#E31837",
     "awayB2B": false,
+    "awayInjuries": [],
     "home": "ORL",
     "homeFull": "Magic",
     "homeColor": "#0077C0",
     "homeB2B": false,
-    "homeSpread": -2.5,
-    "juice": "-180",
-    "awayML": "+600",
-    "homeML": "-1100",
-    "total": 242.5,
-    "overJ": "-118",
-    "underJ": "-110",
-    "homeWinProb": 86.5,
-    "awayWinProb": 13.5,
-    "modelScore": 63.1,
-    "projMargin": 13.9,
+    "homeInjuries": [],
+    "homeSpread": -4.5,
+    "juice": "-295",
+    "awayML": "+1060",
+    "homeML": "-3500",
+    "total": 267.5,
+    "overJ": "+155",
+    "underJ": "-210",
+    "homeWinProb": 91.9,
+    "awayWinProb": 8.1,
+    "modelScore": 67.1,
+    "projMargin": 15.9,
     "spreadEdge": 11.4,
     "spdSide": "home",
     "spdRec": "strong",
-    "totalPick": "Over 242.5",
+    "totalPick": "Over 267.5",
     "totalRec": "value",
     "mlRec": "strong",
+    "lineMoved": true,
+    "lineMovedNote": "Line likely moved toward ORL (sharp action)",
+    "sharpFlag": false,
+    "sharpNote": "",
+    "awayBetPct": null,
+    "homeBetPct": null,
+    "awayMoneyPct": null,
+    "homeMoneyPct": null,
     "signals": [
+      {
+        "t": "Line moved \ud83d\udcc8",
+        "c": "sig-i"
+      },
       {
         "t": "Lock territory",
         "c": "sig-s"
@@ -273,11 +336,11 @@ const GAMES=[
         "c": "sig-s"
       },
       {
-        "t": "Over 242.5",
+        "t": "Over 267.5",
         "c": "sig-i"
       }
     ],
-    "note": "Vegas has ORL as 2.5-pt favorite. Model projects ORL wins 86% \u2014 spread edge: +11.4 pts. O/U 242.5: lean Over (fast pace)."
+    "note": "Vegas has ORL as 4.5-pt favorite. Model projects ORL wins 92% \u2014 spread edge: +11.4 pts. Line likely moved toward ORL (sharp action). O/U 267.5: lean Over (fast pace). "
   },
   {
     "id": 2,
@@ -287,28 +350,42 @@ const GAMES=[
     "awayFull": "Nets",
     "awayColor": "#888",
     "awayB2B": false,
+    "awayInjuries": [],
     "home": "ATL",
     "homeFull": "Hawks",
     "homeColor": "#C1D32F",
     "homeB2B": false,
+    "homeInjuries": [],
     "homeSpread": -7.5,
-    "juice": "-130",
-    "awayML": "+470",
-    "homeML": "-750",
-    "total": 215.5,
-    "overJ": "-110",
-    "underJ": "-120",
-    "homeWinProb": 83.4,
-    "awayWinProb": 16.6,
-    "modelScore": 61.4,
-    "projMargin": 12.7,
-    "spreadEdge": 5.2,
+    "juice": "-110",
+    "awayML": "+800",
+    "homeML": "-1600",
+    "total": 210.5,
+    "overJ": "-105",
+    "underJ": "-125",
+    "homeWinProb": 89.4,
+    "awayWinProb": 10.6,
+    "modelScore": 66.5,
+    "projMargin": 15.0,
+    "spreadEdge": 7.5,
     "spdSide": "home",
     "spdRec": "strong",
-    "totalPick": "215.5",
-    "totalRec": "neutral",
+    "totalPick": "Under 210.5",
+    "totalRec": "value",
     "mlRec": "strong",
+    "lineMoved": true,
+    "lineMovedNote": "Line likely moved toward ATL (sharp action)",
+    "sharpFlag": false,
+    "sharpNote": "",
+    "awayBetPct": null,
+    "homeBetPct": null,
+    "awayMoneyPct": null,
+    "homeMoneyPct": null,
     "signals": [
+      {
+        "t": "Line moved \ud83d\udcc8",
+        "c": "sig-i"
+      },
       {
         "t": "Lock territory",
         "c": "sig-s"
@@ -316,9 +393,13 @@ const GAMES=[
       {
         "t": "Home covers",
         "c": "sig-s"
+      },
+      {
+        "t": "Under 210.5",
+        "c": "sig-i"
       }
     ],
-    "note": "Vegas has ATL as 7.5-pt favorite. Model projects ATL wins 83% \u2014 spread edge: +5.2 pts. O/U 215.5: neutral pace game."
+    "note": "Vegas has ATL as 7.5-pt favorite. Model projects ATL wins 89% \u2014 spread edge: +7.5 pts. Line likely moved toward ATL (sharp action). O/U 210.5: lean Under (defensive). "
   },
   {
     "id": 3,
@@ -328,28 +409,42 @@ const GAMES=[
     "awayFull": "Bucks",
     "awayColor": "#00471B",
     "awayB2B": false,
+    "awayInjuries": [],
     "home": "MIA",
     "homeFull": "Heat",
     "homeColor": "#98002E",
     "homeB2B": false,
-    "homeSpread": -7.5,
-    "juice": "-120",
-    "awayML": "+500",
-    "homeML": "-810",
-    "total": 219.5,
-    "overJ": "-115",
-    "underJ": "-115",
-    "homeWinProb": 84.2,
-    "awayWinProb": 15.8,
-    "modelScore": 61.5,
-    "projMargin": 13.0,
-    "spreadEdge": 5.5,
+    "homeInjuries": [],
+    "homeSpread": -5.5,
+    "juice": "-115",
+    "awayML": "+550",
+    "homeML": "-920",
+    "total": 215.5,
+    "overJ": "-130",
+    "underJ": "+100",
+    "homeWinProb": 85.4,
+    "awayWinProb": 14.6,
+    "modelScore": 64.6,
+    "projMargin": 13.5,
+    "spreadEdge": 8.0,
     "spdSide": "home",
     "spdRec": "strong",
-    "totalPick": "219.5",
+    "totalPick": "215.5",
     "totalRec": "neutral",
     "mlRec": "strong",
+    "lineMoved": true,
+    "lineMovedNote": "Line likely moved toward MIA (sharp action)",
+    "sharpFlag": false,
+    "sharpNote": "",
+    "awayBetPct": null,
+    "homeBetPct": null,
+    "awayMoneyPct": null,
+    "homeMoneyPct": null,
     "signals": [
+      {
+        "t": "Line moved \ud83d\udcc8",
+        "c": "sig-i"
+      },
       {
         "t": "Lock territory",
         "c": "sig-s"
@@ -359,7 +454,7 @@ const GAMES=[
         "c": "sig-s"
       }
     ],
-    "note": "Vegas has MIA as 7.5-pt favorite. Model projects MIA wins 84% \u2014 spread edge: +5.5 pts. O/U 219.5: neutral pace game."
+    "note": "Vegas has MIA as 5.5-pt favorite. Model projects MIA wins 85% \u2014 spread edge: +8.0 pts. Line likely moved toward MIA (sharp action). O/U 215.5: neutral pace game. "
   },
   {
     "id": 4,
@@ -369,38 +464,52 @@ const GAMES=[
     "awayFull": "Mavs",
     "awayColor": "#00538C",
     "awayB2B": false,
+    "awayInjuries": [],
     "home": "MEM",
     "homeFull": "Grizzlies",
     "homeColor": "#5D76A9",
     "homeB2B": false,
-    "homeSpread": 8.5,
-    "juice": "-105",
-    "awayML": "-520",
-    "homeML": "+350",
-    "total": 237.5,
-    "overJ": "-110",
-    "underJ": "-120",
-    "homeWinProb": 20.9,
-    "awayWinProb": 79.1,
-    "modelScore": 45.7,
-    "projMargin": -11.1,
-    "spreadEdge": -2.6,
+    "homeInjuries": [],
+    "homeSpread": 3.5,
+    "juice": "-115",
+    "awayML": "-210",
+    "homeML": "+160",
+    "total": 231.5,
+    "overJ": "-120",
+    "underJ": "-110",
+    "homeWinProb": 36.2,
+    "awayWinProb": 63.8,
+    "modelScore": 47.9,
+    "projMargin": -5.2,
+    "spreadEdge": -1.7,
     "spdSide": "away",
     "spdRec": "value",
-    "totalPick": "Over 237.5",
+    "totalPick": "Over 231.5",
     "totalRec": "value",
-    "mlRec": "value",
+    "mlRec": "lean",
+    "lineMoved": true,
+    "lineMovedNote": "Line likely moved toward DAL (sharp action)",
+    "sharpFlag": false,
+    "sharpNote": "",
+    "awayBetPct": null,
+    "homeBetPct": null,
+    "awayMoneyPct": null,
+    "homeMoneyPct": null,
     "signals": [
       {
-        "t": "ATS value: away",
+        "t": "Line moved \ud83d\udcc8",
+        "c": "sig-i"
+      },
+      {
+        "t": "ATS edge: away",
         "c": "sig-v"
       },
       {
-        "t": "Over 237.5",
+        "t": "Over 231.5",
         "c": "sig-i"
       }
     ],
-    "note": "Vegas has DAL as 8.5-pt favorite. Model projects DAL wins 79% \u2014 spread edge: -2.6 pts. O/U 237.5: lean Over (fast pace)."
+    "note": "Vegas has DAL as 3.5-pt favorite. Model projects DAL wins 64% \u2014 spread edge: -1.7 pts. Line likely moved toward DAL (sharp action). O/U 231.5: lean Over (fast pace). "
   },
   {
     "id": 5,
@@ -410,75 +519,108 @@ const GAMES=[
     "awayFull": "Nuggets",
     "awayColor": "#0E2240",
     "awayB2B": true,
+    "awayInjuries": [],
     "home": "SAS",
     "homeFull": "Spurs",
     "homeColor": "#999",
     "homeB2B": false,
-    "homeSpread": -3.5,
-    "juice": "-115",
-    "awayML": "+124",
-    "homeML": "-160",
-    "total": 243.5,
-    "overJ": "-115",
-    "underJ": "-115",
-    "homeWinProb": 58.0,
-    "awayWinProb": 42.0,
-    "modelScore": 58.5,
-    "projMargin": 3.0,
-    "spreadEdge": -0.5,
+    "homeInjuries": [],
+    "homeSpread": -9.5,
+    "juice": "-120",
+    "awayML": "+290",
+    "homeML": "-410",
+    "total": 244.5,
+    "overJ": "-120",
+    "underJ": "-110",
+    "homeWinProb": 75.8,
+    "awayWinProb": 24.2,
+    "modelScore": 65.1,
+    "projMargin": 9.8,
+    "spreadEdge": 0.3,
     "spdSide": null,
     "spdRec": "neutral",
-    "totalPick": "Over 243.5",
+    "totalPick": "Over 244.5",
     "totalRec": "value",
-    "mlRec": "lean",
+    "mlRec": "value",
+    "lineMoved": true,
+    "lineMovedNote": "Line likely moved toward SAS (sharp action)",
+    "sharpFlag": false,
+    "sharpNote": "",
+    "awayBetPct": null,
+    "homeBetPct": null,
+    "awayMoneyPct": null,
+    "homeMoneyPct": null,
     "signals": [
       {
         "t": "DEN B2B \ud83d\ude34",
         "c": "sig-f"
       },
       {
-        "t": "Over 243.5",
+        "t": "Line moved \ud83d\udcc8",
+        "c": "sig-i"
+      },
+      {
+        "t": "Over 244.5",
         "c": "sig-i"
       }
     ],
-    "note": "Vegas has SAS as 3.5-pt favorite. Model projects SAS wins 58% \u2014 spread edge: -0.5 pts. DEN on a back-to-back. O/U 243.5: lean Over (fast pace)."
+    "note": "Vegas has SAS as 9.5-pt favorite. Model projects SAS wins 76% \u2014 spread edge: +0.3 pts. DEN on a back-to-back. Line likely moved toward SAS (sharp action). O/U 244.5: lean Over (fast pace). "
   },
   {
     "id": 6,
-    "time": "9:40 PM ET",
+    "time": "9:43 PM ET",
     "conf": "W",
     "away": "BOS",
     "awayFull": "Celtics",
     "awayColor": "#007A33",
     "awayB2B": false,
+    "awayInjuries": [],
     "home": "OKC",
     "homeFull": "Thunder",
     "homeColor": "#007AC1",
     "homeB2B": false,
-    "homeSpread": -8.5,
-    "juice": "-110",
-    "awayML": "+275",
-    "homeML": "-345",
-    "total": 216.5,
-    "overJ": "-112",
-    "underJ": "-108",
-    "homeWinProb": 74.4,
-    "awayWinProb": 25.6,
-    "modelScore": 59.1,
-    "projMargin": 9.3,
-    "spreadEdge": 0.8,
+    "homeInjuries": [],
+    "homeSpread": -7.5,
+    "juice": "-120",
+    "awayML": "+240",
+    "homeML": "-330",
+    "total": 213.5,
+    "overJ": "-115",
+    "underJ": "-115",
+    "homeWinProb": 72.3,
+    "awayWinProb": 27.7,
+    "modelScore": 61.4,
+    "projMargin": 8.5,
+    "spreadEdge": 1.0,
     "spdSide": null,
     "spdRec": "neutral",
-    "totalPick": "216.5",
-    "totalRec": "neutral",
+    "totalPick": "Under 213.5",
+    "totalRec": "value",
     "mlRec": "value",
-    "signals": [],
-    "note": "Vegas has OKC as 8.5-pt favorite. Model projects OKC wins 74% \u2014 spread edge: +0.8 pts. O/U 216.5: neutral pace game."
+    "lineMoved": true,
+    "lineMovedNote": "Line likely moved toward OKC (sharp action)",
+    "sharpFlag": false,
+    "sharpNote": "",
+    "awayBetPct": null,
+    "homeBetPct": null,
+    "awayMoneyPct": null,
+    "homeMoneyPct": null,
+    "signals": [
+      {
+        "t": "Line moved \ud83d\udcc8",
+        "c": "sig-i"
+      },
+      {
+        "t": "Under 213.5",
+        "c": "sig-i"
+      }
+    ],
+    "note": "Vegas has OKC as 7.5-pt favorite. Model projects OKC wins 72% \u2014 spread edge: +1.0 pts. Line likely moved toward OKC (sharp action). O/U 213.5: lean Under (defensive). "
   }
 ];
 const EAST=[
   {r:1,ab:"DET",t:"Detroit Pistons",w:45,l:16,strk:"L2"},
-  {r:2,ab:"BOS",t:"Boston Celtics",w:42,l:21,strk:"W1"},
+  {r:2,ab:"BOS",t:"Boston Celtics",w:42,l:21,strk:"L1"},
   {r:3,ab:"NYK",t:"New York Knicks",w:41,l:23,strk:"W1"},
   {r:4,ab:"CLE",t:"Cleveland Cavs",w:39,l:24,strk:"W2"},
   {r:5,ab:"TOR",t:"Toronto Raptors",w:35,l:27,strk:"L2"},
@@ -516,9 +658,17 @@ function mlToDec(ml){const s=String(ml),n=parseFloat(s.replace('+',''));return(s
 function recCls(r){return r==='strong'?'rec-strong':r==='value'?'rec-value':r==='fade'?'rec-fade':'';}
 function recTag(r){if(!r||r==='neutral')return'';const m={strong:'✓ Strong',value:'★ Value',lean:'≈ Lean',fade:'✗ Fade'},c={strong:'s',value:'v',lean:'l',fade:'f'};return'<div class="b-rec '+(c[r]||'')+'">'+(m[r]||r)+'</div>';}
 function isPicked(gid,type,side){return parlay.some(p=>p.gid===gid&&p.type===type&&p.side===side);}
+function bpctBar(g){
+  if(!g.awayBetPct&&!g.homeBetPct) return '';
+  const ab=g.awayBetPct||50,hb=g.homeBetPct||(100-ab);
+  const am=g.awayMoneyPct,hm=g.homeMoneyPct;
+  const moneyRow=am?`<div class="bpct-row"><div class="bpct-lbl">Money</div><div class="bpct-bar"><div class="bpct-away" style="width:${am}%">${am}% ${g.away}</div><div class="bpct-home" style="width:${hm||100-am}%">${hm||100-am}% ${g.home}</div></div></div>`:'';
+  const sharpRow=g.sharpFlag?`<div class="bpct-sharp">🔪 Sharp money alert: ${g.sharpNote}</div>`:'';
+  return `<div class="bpct-wrap"><div class="bpct-row"><div class="bpct-lbl">Bets</div><div class="bpct-bar"><div class="bpct-away" style="width:${ab}%">${ab}% ${g.away}</div><div class="bpct-home" style="width:${hb}%">${hb}% ${g.home}</div></div></div>${moneyRow}${sharpRow}</div>`;
+}
 function renderGames(){
   const el=document.getElementById('game-list');
-  if(!GAMES.length){el.innerHTML='<div class="no-games"><div class="no-games-icon">🏀</div><div class="no-games-txt">No games today</div><div class="no-games-sub">Updated every morning at 8 AM ET.<br>Check back tomorrow!</div></div>';return;}
+  if(!GAMES.length){el.innerHTML='<div class="no-games"><div class="no-games-icon">🏀</div><div class="no-games-txt">No games today</div><div class="no-games-sub">Updated 4x daily at 8AM, 12PM, 5PM, 8PM ET.<br>Check back tomorrow!</div></div>';return;}
   el.innerHTML=GAMES.map(g=>{
     const abs=Math.abs(g.homeSpread),hS=g.homeSpread<0?`-${abs}`:`+${abs}`,aS=g.homeSpread<0?`+${abs}`:`-${abs}`;
     const hSR=g.spdSide==='home'?g.spdRec:(g.spdSide==='away'?'fade':'neutral'),aSR=g.spdSide==='away'?g.spdRec:(g.spdSide==='home'?'fade':'neutral');
@@ -526,14 +676,18 @@ function renderGames(){
     const hMR=g.homeWinProb>=68?g.mlRec:(g.homeWinProb<35?'fade':'neutral'),aMR=g.awayWinProb>=68?g.mlRec:(g.awayWinProb<35?'fade':'neutral');
     const sigs=(g.signals||[]).map(s=>`<span class="sig ${s.c}">${s.t}</span>`).join('');
     const b2b=(g.homeB2B||g.awayB2B)?'<span class="badge badge-b2b">B2B 😴</span>':'';
+    const inj=(g.homeInjuries?.length||g.awayInjuries?.length)?'<span class="badge badge-inj">Injuries ⚠️</span>':'';
+    const sharp=g.sharpFlag?'<span class="badge badge-sharp">Sharp $$ 🔪</span>':'';
+    const moved=g.lineMoved?'<span class="badge badge-sharp">Line moved 📈</span>':'';
     return `<div class="game-card${openGame===g.id?' open':''}" onclick="toggleDetail(${g.id})">
-      <div class="gc-top"><div class="gc-time">🏀 ${g.time}</div><div class="gc-badges"><span class="badge badge-${g.conf==='E'?'e':'w'}">${g.conf==='E'?'East':'West'}</span><span class="badge badge-ou">O/U ${g.total}</span>${b2b}</div></div>
+      <div class="gc-top"><div class="gc-time">🏀 ${g.time}</div><div class="gc-badges"><span class="badge badge-${g.conf==='E'?'e':'w'}">${g.conf==='E'?'East':'West'}</span><span class="badge badge-ou">O/U ${g.total}</span>${b2b}${inj}${sharp}${moved}</div></div>
       <div class="gc-matchup">
-        <div class="team-row"><div class="team-chip" style="background:${g.awayColor}22;color:${g.awayColor}">${g.away}</div><div class="team-info"><div class="team-name">${g.awayFull}${g.awayB2B?' 😴':''}</div><div class="team-meta">Away</div></div><div class="team-odds"><div class="team-ml" style="color:${g.awayWinProb>50?'var(--green)':'var(--muted2)'}">${g.awayML}</div><div class="team-spd">${aS}</div><div class="team-prob">${g.awayWinProb}% win</div></div></div>
+        <div class="team-row"><div class="team-chip" style="background:${g.awayColor}22;color:${g.awayColor}">${g.away}</div><div class="team-info"><div class="team-name">${g.awayFull}${g.awayB2B?' 😴':''}${g.awayInjuries?.length?' ⚠️':''}</div><div class="team-meta">Away</div></div><div class="team-odds"><div class="team-ml" style="color:${g.awayWinProb>50?'var(--green)':'var(--muted2)'}">${g.awayML}</div><div class="team-spd">${aS}</div><div class="team-prob">${g.awayWinProb}% win</div></div></div>
         <div class="vs-row"><div class="vs-line"></div><div class="vs-txt">@ ${g.homeFull.toUpperCase()}</div><div class="vs-line"></div></div>
-        <div class="team-row"><div class="team-chip" style="background:${g.homeColor}22;color:${g.homeColor}">${g.home}</div><div class="team-info"><div class="team-name">${g.homeFull}${g.homeB2B?' 😴':''}</div><div class="team-meta">Home</div></div><div class="team-odds"><div class="team-ml" style="color:${g.homeWinProb>50?'var(--green)':'var(--muted2)'}">${g.homeML}</div><div class="team-spd">${hS}</div><div class="team-prob">${g.homeWinProb}% win</div></div></div>
+        <div class="team-row"><div class="team-chip" style="background:${g.homeColor}22;color:${g.homeColor}">${g.home}</div><div class="team-info"><div class="team-name">${g.homeFull}${g.homeB2B?' 😴':''}${g.homeInjuries?.length?' ⚠️':''}</div><div class="team-meta">Home</div></div><div class="team-odds"><div class="team-ml" style="color:${g.homeWinProb>50?'var(--green)':'var(--muted2)'}">${g.homeML}</div><div class="team-spd">${hS}</div><div class="team-prob">${g.homeWinProb}% win</div></div></div>
       </div>
       <div class="win-bar-wrap"><div class="win-bar"><div class="win-bar-fill" style="width:${g.homeWinProb}%;background:linear-gradient(90deg,${g.awayColor}99,${g.homeColor})"></div></div><div class="win-bar-lbls"><span>${g.away} ${g.awayWinProb}%</span><span>${g.home} ${g.homeWinProb}%</span></div></div>
+      ${bpctBar(g)}
       <div class="bet-grid">
         <div class="bcell ${recCls(aSR)} ${isPicked(g.id,'SPD','away')?'picked':''}" onclick="event.stopPropagation();pick(${g.id},'SPD','away','${g.away} ${aS}','${g.juice}',52)"><div class="b-lbl">${g.away} Spread</div><div class="b-val">${aS}</div><div class="b-sub">${g.juice}</div>${recTag(aSR)}</div>
         <div class="bcell ${recCls(oR)} ${isPicked(g.id,'OVR','both')?'picked':''}" onclick="event.stopPropagation();pick(${g.id},'OVR','both','Over ${g.total}','${g.overJ}',50)"><div class="b-lbl">Over</div><div class="b-val">${g.total}</div><div class="b-sub">${g.overJ}</div>${recTag(oR)}</div>
@@ -552,8 +706,14 @@ function toggleDetail(id){
   if(!openGame){anchor.innerHTML='';return;}
   const g=GAMES.find(x=>x.id===id),abs=Math.abs(g.homeSpread),fav=g.homeSpread<0?g.home:g.away;
   const atsPick=g.spdSide==='home'?`${g.home} ${g.homeSpread<0?'-':'+'}`+abs:`${g.away} ${g.homeSpread<0?'+':'-'}`+abs;
+  const injBlock=(g.homeInjuries?.length||g.awayInjuries?.length)?
+    `<div style="background:rgba(255,68,68,0.07);border:1px solid rgba(255,68,68,0.2);border-radius:9px;padding:10px 12px;margin-bottom:10px;font-size:11px;color:var(--red);line-height:1.7;">
+      <strong>⚠️ Injury Report</strong><br>
+      ${g.awayInjuries?.length?g.away+': '+g.awayInjuries.join(', ')+'<br>':''}
+      ${g.homeInjuries?.length?g.home+': '+g.homeInjuries.join(', '):''}</div>`:'';
   anchor.innerHTML=`<div class="detail-panel on">
     <div class="dp-title">${g.away} @ ${g.home} · ${g.time}</div>
+    ${injBlock}
     <div class="dp-grid">
       <div class="dp-stat"><div class="dp-stat-lbl">Vegas Spread</div><div class="dp-stat-val" style="color:var(--gold)">${fav} -${abs}</div><div class="dp-stat-sub">Juice ${g.juice}</div></div>
       <div class="dp-stat"><div class="dp-stat-lbl">O/U Total</div><div class="dp-stat-val">${g.total}</div><div class="dp-stat-sub">O ${g.overJ} / U ${g.underJ}</div></div>
