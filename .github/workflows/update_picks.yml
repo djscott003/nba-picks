@@ -2,7 +2,10 @@ name: NBA Picks Daily Update
 
 on:
   schedule:
-    - cron: '0 13 * * *'   # 8:00 AM ET (13:00 UTC)
+    - cron: '0 13 * * *'   # 8:00 AM ET
+    - cron: '0 17 * * *'   # 12:00 PM ET
+    - cron: '0 22 * * *'   # 5:00 PM ET
+    - cron: '0 1 * * *'    # 8:00 PM ET
   workflow_dispatch:         # manual trigger anytime
 
 jobs:
