@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>NBA Picks · Mon May 18 · Updated 7:01 PM ET</title>
+<title>NBA Picks · Mon Jun 1 · Updated 2:04 AM ET</title>
 <style>
 :root{--bg:#06080f;--card:#0d1119;--card2:#131822;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--text:#e2e6f0;--muted:#4a5270;--muted2:#7a84a8;--green:#00e676;--red:#ff4444;--gold:#ffc107;--blue:#40c4ff;--purple:#b388ff;--accent:#00e5ff;--accent2:#0091ea;}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -161,10 +161,10 @@ tr:last-child td{border-bottom:none;} tr:hover td{background:rgba(255,255,255,0.
 <div class="hdr">
   <div class="hdr-left">
     <div class="hdr-title">🏀 NBA PICKS</div>
-    <div class="hdr-sub">Mon May 18 · Updated 7:01 PM ET · v4</div>
+    <div class="hdr-sub">Mon Jun 1 · Updated 2:04 AM ET · v4</div>
   </div>
   <div class="hdr-right">
-    <div class="live-pill"><div class="dot"></div>1 Games</div>
+    <div class="live-pill"><div class="dot"></div>0 Games</div>
     <div class="record-pill">ATS 0-0 (—)</div>
   </div>
 </div>
@@ -182,12 +182,7 @@ tr:last-child td{border-bottom:none;} tr:hover td{background:rgba(255,255,255,0.
       <div class="rl-stat"><div class="rl-val">0-0</div><div class="rl-lbl">O/U</div></div>
     </div>
   </a>
-  <div style="background:linear-gradient(135deg,rgba(255,193,7,0.12),rgba(0,229,255,0.08));border:1px solid rgba(255,193,7,0.35);border-radius:14px;padding:14px 16px;margin-bottom:14px;">
-          <div style="font-size:10px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">🏆 Best Bet of the Night</div>
-          <div style="font-size:20px;font-weight:900;color:var(--text);margin-bottom:4px;">SAS @ OKC</div>
-          <div style="font-size:16px;font-weight:800;color:var(--green);">221.5</div>
-          <div style="font-size:11px;color:var(--muted2);margin-top:4px;">Model score 60.5 · EV -6.0% · 8:40 PM ET</div>
-        </div>
+  
   <div class="section-label">All Games</div>
   <div class="legend">
     <span><span style="color:var(--green)">■</span> Strong</span>
@@ -232,69 +227,10 @@ tr:last-child td{border-bottom:none;} tr:hover td{background:rgba(255,255,255,0.
   <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Team</th><th>W</th><th>L</th><th>PCT</th><th>Strk</th></tr></thead><tbody id="east-body"></tbody></table></div>
   <div class="std-conf" style="margin-top:20px">Western Conference</div>
   <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Team</th><th>W</th><th>L</th><th>PCT</th><th>Strk</th></tr></thead><tbody id="west-body"></tbody></table></div>
-  <div class="std-note">Updated daily · Mon May 18 · Updated 7:01 PM ET</div>
+  <div class="std-note">Updated daily · Mon Jun 1 · Updated 2:04 AM ET</div>
 </div>
 <script>
-const GAMES=[
-  {
-    "id": 1,
-    "time": "8:40 PM ET",
-    "conf": "W",
-    "away": "SAS",
-    "awayFull": "Spurs",
-    "awayColor": "#999",
-    "awayB2B": false,
-    "awayRust": false,
-    "awayInjuries": [],
-    "home": "OKC",
-    "homeFull": "Thunder",
-    "homeColor": "#007AC1",
-    "homeB2B": false,
-    "homeRust": false,
-    "homeInjuries": [],
-    "homeSpread": -6.5,
-    "juice": "-105",
-    "awayML": "+190",
-    "homeML": "-230",
-    "total": 221.5,
-    "overJ": "-110",
-    "underJ": "-110",
-    "homeWinProb": 66.9,
-    "awayWinProb": 33.1,
-    "homeMLEV": -4.0,
-    "awayMLEV": -4.0,
-    "homeSpdEV": -6.0,
-    "awaySpdEV": -6.0,
-    "homeMLRec": "fade",
-    "awayMLRec": "fade",
-    "modelScore": 60.5,
-    "projMargin": 6.4,
-    "spreadEdge": -0.1,
-    "spdSide": null,
-    "spdRec": "neutral",
-    "spdEV": -6.0,
-    "totalPick": "221.5",
-    "totalRec": "neutral",
-    "avgPace": 100.8,
-    "sameDivision": false,
-    "lineMoved": true,
-    "sharpFlag": false,
-    "sharpNote": "",
-    "awayBetPct": null,
-    "homeBetPct": null,
-    "awayMoneyPct": null,
-    "homeMoneyPct": null,
-    "bestBetScore": 10,
-    "signals": [
-      {
-        "t": "Line moved \ud83d\udcc8",
-        "c": "sig-i"
-      }
-    ],
-    "note": "Vegas has OKC as 6.5-pt favorite. Model: OKC wins 67%, spread edge -0.1 pts. Neutral pace matchup (100.8) \u2014 no strong total lean. ML EV: OKC -4.0% / SAS -4.0%. Line moved toward home (sharp action).",
-    "isBestBet": true
-  }
-];
+const GAMES=[];
 const EAST=[
   {r:1,ab:"DET",t:"Detroit Pistons",w:45,l:16,strk:"L2"},{r:2,ab:"BOS",t:"Boston Celtics",w:42,l:21,strk:"L1"},
   {r:3,ab:"NYK",t:"New York Knicks",w:41,l:23,strk:"W1"},{r:4,ab:"CLE",t:"Cleveland Cavs",w:39,l:24,strk:"W2"},
